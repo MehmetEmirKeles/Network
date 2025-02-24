@@ -6,13 +6,6 @@ Proje Kurulumu
 Projeye başlamak için depo'yu klonlamanız ve kurulum talimatlarını takip etmeniz gerekmektedir. Bu proje, ağ güvenliği otomasyon görevlerine yardımcı olmak için tasarlanmıştır.
 Adım 1: Depoyu Klonlayın
 
-Depoyu aşağıdaki komutla klonlayabilirsiniz:
-
-
-'''
-git clone https://github.com/MehmetEmirKeles/Network.git
-
-'''
-
+``Depoyu aşağıdaki komutla klonlayabilirsiniz:``
 
 
