@@ -9,18 +9,48 @@ You can clone the repository using the following command:
 git clone https://github.com/MehmetEmirKeles/Network.git
 ```
 
-Step 2: Navigate to the Project Folder
+Step 2: Pre-Installation Steps
+
+Before you can start using the tools in this project, make sure your system is up-to-date and has all the necessary dependencies installed.
+Update your system
+Update the package lists for the latest available versions of the software:
+```
+sudo apt update
+```
+Upgrade your system
+Install the latest updates for your installed software:
+```
+sudo apt upgrade
+```
+nstall Git
+Git is necessary for cloning the repository. Install it with the following command:
+```
+sudo apt install git
+```
+Install Curl
+Curl is used to download files over the internet. Install it by running:
+
+```
+sudo apt install curl
+```
+Install Python 3 (if needed for certain functionalities)
+Python 3 may be required for certain advanced features of the tools:
+```
+sudo apt install python3
+```
+Install Bash (if not already installed)
+The scripts in this project are designed for Bash. Usually, Bash is pre-installed on most Linux systems, but you can ensure it's installed with:
+```
+sudo apt install bash
+```
+
+Step 3: Navigate to the Project Folder
 
 Once the repository is cloned, navigate to the project directory:
 ```
 cd Network
 ```
-Step 3: Setup the Tools
 
-There are installation and setup scripts available for an easy setup. To begin setting up the tools, run the setup.sh script. This script will help you install the necessary dependencies and prepare the tools for use.
-```
-bash setup.sh
-```
 This will ensure that all the dependencies and tools are installed correctly. Scripts Available in the Repository
 
 emirkeles.sh: The main script for network security tasks. This script will help automate common network security processes.
