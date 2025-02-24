@@ -57,3 +57,57 @@ Contributing
 We welcome contributions to improve the tools! If you would like to contribute, please fork the repository, create a branch, and submit a pull request. We look forward to your suggestions and improvements.
 
 This version is structured to be clear and includes installation instructions, feature descriptions, and a brief introduction. You can copy-paste this into your GitHub repository's README section. Let me know if you'd like any further changes or additions!
+
+Ağ Güvenliği Araçları
+Giriş
+
+Ağ Güvenliği Araçları deposuna hoş geldiniz! Bu proje, ağ altyapınızı güçlendirmek ve potansiyel tehditlere karşı korumak için kolayca indirip kullanabileceğiniz çeşitli ağ güvenliği araçları sunmayı amaçlamaktadır.
+
+Bu repoda, projemizin temeli olan iki ana betiği bulacaksınız:
+
+    emirkeles.sh (Bash Betiği)
+    emirkeleseng.sh (Bash Betiği - İngilizce Versiyon)
+
+Bu betikler, hızlı ve verimli bir şekilde başlayabilmeniz için basit ama güçlü olacak şekilde tasarlanmıştır. Aşağıda, bu araçları kurmak ve kullanmak için gerekli tüm bilgileri bulacaksınız.
+Kurulum Rehberi
+
+Ağ güvenliği araçlarını indirmek ve kurmak için aşağıdaki adımları izleyin:
+Gereksinimler
+
+    Linux tabanlı bir işletim sistemi (tercihen Ubuntu veya Kali Linux)
+    Sudo ayrıcalıkları
+    Temel terminal kullanımı bilgisi
+
+Adım Adım Kurulum
+
+    Depoyu Klonlayın:
+
+    Depoyu yerel makinenize klonlayarak başlayın:
+
+git clone https://github.com/MehmetEmirKeles/Network.git
+cd Network
+
+Betiğe Çalıştırma İzinleri Verin:
+
+Betiklere çalıştırma izinleri verin:
+
+chmod +x emirkeles.sh
+chmod +x emirkeleseng.sh
+
+Betiği Çalıştırın:
+
+Betiği çalıştırarak:
+
+./emirkeles.sh
+
+veya İngilizce versiyonu için:
+
+    ./emirkeleseng.sh
+
+    Ekrandaki talimatları izleyerek aracı ihtiyaçlarınıza göre yapılandırın.
+
+Özellikler
+
+    Ağ Taraması: Ağınızı otomatik olarak tarayarak güvenlik açıklarını ve potansiyel tehditleri belirler.
+    Güvenlik Duvarı Yapılandırması: Ağınızı korumak için güvenlik duvarı ayarlarını kolayca etkinleştirir veya devre dışı bırakır.
+    Ağ İzleme: Ağ trafiğinizi izleyerek olağandışı aktiviteleri tespit eder.
