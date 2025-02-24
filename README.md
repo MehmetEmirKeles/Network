@@ -2,14 +2,10 @@ Network Security Tools - Network
 
 A collection of useful network security scripts designed to automate security tasks. This repository contains scripts for various security-related tasks, making it easier for network administrators, security professionals, and anyone interested in network security to automate and manage their security measures effectively. Project Setup
 
-To get started with the project, you need to clone the repository and follow the setup instructions. This project is designed to help with network security automation tasks. Installation & Setup Step 1: Clone the Repository
+To get started with the project, you need to clone the repository and follow the setup instructions. 
 
-You can clone the repository using the following command:
-```
-git clone https://github.com/MehmetEmirKeles/Network.git
-```
 
-Step 2: Pre-Installation Steps
+Step 1: Pre-Installation Steps
 
 Before you can start using the tools in this project, make sure your system is up-to-date and has all the necessary dependencies installed.
 Update your system
@@ -43,6 +39,14 @@ The scripts in this project are designed for Bash. Usually, Bash is pre-installe
 ```
 sudo apt install bash
 ```
+This project is designed to help with network security automation tasks. Installation & Setup Step 2: Clone the Repository
+
+You can clone the repository using the following command:
+```
+git clone https://github.com/MehmetEmirKeles/Network.git
+```
+
+
 
 Step 3: Navigate to the Project Folder
 
@@ -89,38 +93,87 @@ Download Network-Security Tools
 
  *Türkçe Açıklama (Optional for Turkish Users) Proje Kurulumu*
 
-Bu proje, ağ güvenliği ile ilgili görevleri otomatikleştirmek için yazılmış kullanışlı script'lerden oluşur. Aşağıdaki adımları takip ederek projenizi kurabilirsiniz.
+Network Security Tools - Ağ Güvenliği Araçları
 
-Adım 1: Depoyu Klonlayın
+Ağ güvenliği görevlerini otomatikleştirmek için tasarlanmış faydalı script'lerin bir koleksiyonu. Bu depo, çeşitli güvenlik ile ilgili görevler için script'ler içeriyor, böylece ağ yöneticileri, güvenlik profesyonelleri ve ağ güvenliği ile ilgilenen herkes güvenlik önlemlerini etkili bir şekilde otomatikleştirip yönetebilir.
+Proje Kurulumu
 
-Projeyi bilgisayarınıza klonlamak için şu komutu kullanabilirsiniz:
+Projeye başlamak için depoyu klonlamalı ve kurulum talimatlarını takip etmelisiniz.
+Adım 1: Kurulum Öncesi Adımlar
+
+Bu projedeki araçları kullanmaya başlamadan önce, sisteminizin güncel olduğundan ve gerekli tüm bağımlılıkların yüklü olduğundan emin olun.
+
+Sisteminizi güncelleyin
+Yazılımın en son sürümleri için paket listelerini güncelleyin:
+```
+sudo apt update
+```
+Sisteminizi yükseltin
+Yüklü yazılımlarınız için en son güncellemeleri yükleyin:
+```
+sudo apt upgrade
+```
+Git'i yükleyin
+Git, depo klonlamak için gereklidir. Aşağıdaki komutla yükleyebilirsiniz:
+```
+sudo apt install git
+```
+Curl'ü yükleyin
+Curl, internet üzerinden dosya indirmek için kullanılır. Aşağıdaki komutla yükleyebilirsiniz:
+```
+sudo apt install curl
+```
+Python 3 yükleyin (bazı fonksiyonellikler için gerekebilir)
+Python 3, araçların bazı gelişmiş özellikleri için gerekebilir:
+```
+sudo apt install python3
+```
+Bash'i yükleyin (eğer zaten yüklü değilse)
+Bu projedeki script'ler Bash için tasarlanmıştır. Çoğu Linux sisteminde Bash önceden yüklü olsa da, aşağıdaki komutla yüklendiğinden emin olabilirsiniz:
+```
+sudo apt install bash
+```
+Bu proje, ağ güvenliği otomasyon görevleriyle ilgili yardımcı olmak için tasarlanmıştır.
+Adım 2: Depoyu Klonlayın
+
+Depoyu şu komutla klonlayabilirsiniz:
 ```
 git clone https://github.com/MehmetEmirKeles/Network.git
 ```
-Adım 2: Proje Klasörüne Geçin
+Adım 3: Proje Klasörüne Geçin
 
-Projeyi klonladıktan sonra, proje klasörüne geçiş yapın:
-```
+Depoyu klonladıktan sonra proje dizinine geçin:
+
 cd Network
-```
-Adım 3: Araçları Kurun
+Mevcut Script'ler
 
-Araçları kurmak için setup.sh dosyasını çalıştırın:
-```
-bash setup.sh
-```
+````emirkeles.sh: Ağ güvenliği görevleri için ana script. Bu script, yaygın ağ güvenliği süreçlerini otomatikleştirmeye yardımcı olacaktır.
+````
+   emirkeleseng.sh: emirkeles.sh script'inin İngilizce versiyonu. Aynı işlevselliği sağlar ancak daha geniş erişilebilirlik için İngilizce olarak sunulmuştur.
+``````Kullanım
+``````
+Kurulum tamamlandığında, script'leri kullanmaya başlayabilirsiniz. İşte ana güvenlik script'ini çalıştırma yolu:
+````
 
-Kullanım
-
-Kurulum tamamlandıktan sonra ana güvenlik script'ini çalıştırabilirsiniz:
-```
 bash emirkeles.sh
-```
-İngilizce versiyonu için:
-```
-bash emirkeleseng.sh
-```
-Özellikler
+````
 
-Ağ güvenliği görevlerinin otomatikleştirilmesi.
-Hızlı uygulama için kullanımı kolay script'ler.
+İngilizce versiyon için:
+``
+bash emirkeleseng.sh
+``
+Özellikler
+``
+    Ağ güvenliği görevlerinin otomatikleştirilmesi
+    Hızlı uygulama için kolay kullanımlı script'ler
+    Hem Türkçe hem de İngilizce versiyonlar mevcuttur
+
+``
+    Proje Deposu:
+  
+    https://github.com/MehmetEmirKeles/Network
+``
+    Direkt İndirme Linki:
+
+    Download Network-Security Tools
+    ```
