@@ -134,6 +134,7 @@ Bu projedeki script'ler Bash için tasarlanmıştır. Çoğu Linux sisteminde Ba
 sudo apt install bash
 ```
 Bu proje, ağ güvenliği otomasyon görevleriyle ilgili yardımcı olmak için tasarlanmıştır.
+
 Adım 2: Depoyu Klonlayın
 
 Depoyu şu komutla klonlayabilirsiniz:
