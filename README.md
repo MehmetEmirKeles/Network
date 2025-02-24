@@ -144,25 +144,30 @@ git clone https://github.com/MehmetEmirKeles/Network.git
 Adım 3: Proje Klasörüne Geçin
 
 Depoyu klonladıktan sonra proje dizinine geçin:
-
+```
 cd Network
+```
 Mevcut Script'ler
-
-````emirkeles.sh: Ağ güvenliği görevleri için ana script. Bu script, yaygın ağ güvenliği süreçlerini otomatikleştirmeye yardımcı olacaktır.
 ````
-   emirkeleseng.sh: emirkeles.sh script'inin İngilizce versiyonu. Aynı işlevselliği sağlar ancak daha geniş erişilebilirlik için İngilizce olarak sunulmuştur.
-``````Kullanım
-``````
+emirkeles.sh:
+````
+Ağ güvenliği görevleri için ana script. Bu script, yaygın ağ güvenliği süreçlerini otomatikleştirmeye yardımcı olacaktır.
+```
+   emirkeleseng.sh:
+```
+   cript'inin İngilizce versiyonu. Aynı işlevselliği sağlar ancak daha geniş erişilebilirlik için İngilizce olarak sunulmuştur.
+Kullanım
+````
+   emirkeles.shemirkeles.sh: Ağ güvenliği görevleri için ana script. Bu script, yaygın ağ güvenliği süreçlerini otomatikleştirmeye yardımcı olacaktır.
+````
 Kurulum tamamlandığında, script'leri kullanmaya başlayabilirsiniz. İşte ana güvenlik script'ini çalıştırma yolu:
-````
-
+```
 bash emirkeles.sh
-````
-
+```
 İngilizce versiyon için:
-``
+```
 bash emirkeleseng.sh
-``
+```
 Özellikler
 ``
     Ağ güvenliği görevlerinin otomatikleştirilmesi
