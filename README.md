@@ -7,6 +7,6 @@ Projeye başlamak için depo'yu klonlamanız ve kurulum talimatlarını takip et
 Adım 1: Depoyu Klonlayın
 
 Depoyu aşağıdaki komutla klonlayabilirsiniz:
-
-'''git clone https://github.com/MehmetEmirKeles/Network.git
+'''bash
+git clone https://github.com/MehmetEmirKeles/Network.git
 
