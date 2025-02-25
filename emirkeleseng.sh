@@ -1,5 +1,6 @@
 #!/bin/bash
-# This script brings the functionality of your Python code to the bash environment.
+# This script transfers the functionality of your Python code to a Bash environment.
+
 # Color definitions
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -11,8 +12,9 @@ RESET='\033[0m'
 # Global PID variables
 mitm_pid=""
 tracking_pid=""
+attacker_monitor_pid=""
 
-# Banner display (used if figlet is installed)
+# Banner display (uses figlet if installed)
 big_welcome() {
     if command -v figlet >/dev/null 2>&1; then
         figlet "WELCOME TO EMIR SECURITY"
@@ -71,8 +73,8 @@ mitm_menu() {
         clear
         big_welcome
         echo -e "${CYAN}MITM Attack Options:"
-        echo -e "${CYAN}1. Start MITM attack (start monitoring)"
-        echo -e "${CYAN}2. Stop MITM attack (stop monitoring)"
+        echo -e "${CYAN}1. MITM attack (start monitoring)"
+        echo -e "${CYAN}2. MITM attack (stop monitoring)"
         echo -e "${CYAN}3. Return to Main Menu"
         echo -e "${CYAN}4. Exit${RESET}"
         read -p $'\nSelect an option (1/2/3/4): ' choice
@@ -114,8 +116,8 @@ packet_tracking_menu() {
         clear
         big_welcome
         echo -e "${CYAN}Package Tracking Options:"
-        echo -e "${CYAN}1. Start packet tracking"
-        echo -e "${CYAN}2. Stop packet tracking"
+        echo -e "${CYAN}1. Packet tracking start"
+        echo -e "${CYAN}2. Packet tracking stop"
         echo -e "${CYAN}3. Return to Main Menu"
         echo -e "${CYAN}4. Exit${RESET}"
         read -p $'\nSelect an option (1/2/3/4): ' choice
@@ -151,20 +153,20 @@ packet_tracking_menu() {
     done
 }
 
-# Enable firewall function
+# Function to enable the firewall
 enable_firewall() {
     echo -e "${GREEN}\nEnabling firewall..."
     sudo ufw enable
-    echo -e "${GREEN}Firewall successfully enabled!"
-    read -p "Press Enter to return to the main menu..."
+    echo -e "${GREEN}Firewall enabled successfully!"
+    read -p "Press Enter to return to main menu..."
 }
 
-# Disable firewall function
+# Function to disable the firewall
 disable_firewall() {
     echo -e "${GREEN}\nDisabling firewall..."
     sudo ufw disable
-    echo -e "${GREEN}Firewall successfully disabled!"
-    read -p "Press Enter to return to the main menu..."
+    echo -e "${GREEN}Firewall disabled successfully!"
+    read -p "Press Enter to return to main menu..."
 }
 
 # Start MITM monitoring
@@ -172,11 +174,16 @@ start_mitm_monitoring() {
     echo -e "${GREEN}\nStarting MITM monitoring..."
     mitm_loop &
     mitm_pid=$!
+    # Start the attack detection monitor (if not already running)
+    if [ -z "$attacker_monitor_pid" ]; then
+        monitor_attacker &
+        attacker_monitor_pid=$!
+    fi
     echo -e "${GREEN}MITM monitoring started."
-    read -p "Press Enter to return to the menu..."
+    read -p "Press Enter to return to menu..."
 }
 
-# MITM loop function (runs in the background)
+# MITM loop function (runs in background)
 mitm_loop() {
     while true; do
         echo -e "${YELLOW}\nScanning for MITM attacks..."
@@ -194,6 +201,12 @@ stop_mitm_monitoring() {
         echo -e "${RED}\nMITM monitoring stopped."
     else
         echo -e "${YELLOW}\nMITM monitoring is not running."
+    fi
+    # If both MITM and Packet Tracking are stopped, then stop the attacker monitor
+    if [ -z "$mitm_pid" ] && [ -z "$tracking_pid" ] && [ -n "$attacker_monitor_pid" ]; then
+        kill $attacker_monitor_pid 2>/dev/null
+        wait $attacker_monitor_pid 2>/dev/null
+        attacker_monitor_pid=""
     fi
     read -p "Press Enter to continue..."
 }
@@ -214,11 +227,16 @@ start_packet_tracking() {
     echo -e "${GREEN}\nStarting packet tracking..."
     tracking_loop &
     tracking_pid=$!
+    # Start the attack detection monitor (if not already running)
+    if [ -z "$attacker_monitor_pid" ]; then
+        monitor_attacker &
+        attacker_monitor_pid=$!
+    fi
     echo -e "${GREEN}Packet tracking started."
-    read -p "Press Enter to return to the menu..."
+    read -p "Press Enter to return to menu..."
 }
 
-# Packet tracking loop function (runs in the background)
+# Packet tracking loop function (runs in background)
 tracking_loop() {
     while true; do
         echo -e "${YELLOW}\nSending ping to 8.8.8.8..."
@@ -241,7 +259,34 @@ stop_packet_tracking() {
     else
         echo -e "${YELLOW}\nPacket tracking is not running."
     fi
+    # If both MITM and Packet Tracking are stopped, then stop the attacker monitor
+    if [ -z "$mitm_pid" ] && [ -z "$tracking_pid" ] && [ -n "$attacker_monitor_pid" ]; then
+        kill $attacker_monitor_pid 2>/dev/null
+        wait $attacker_monitor_pid 2>/dev/null
+        attacker_monitor_pid=""
+    fi
     read -p "Press Enter to continue..."
+}
+
+# Monitor function for detecting attackers (updated)
+monitor_attacker() {
+    # Get the default network interface
+    iface=$(ip route | grep '^default' | awk '{print $5}' | head -n1)
+    while true; do
+        # Capture SYN packet with tcpdump for 10 seconds (-nn: disables name resolution)
+        packet=$(sudo timeout 10 tcpdump -nn -i "$iface" 'tcp[tcpflags] & tcp-syn != 0' 2>/dev/null | head -n 1)
+        if [ -n "$packet" ]; then
+            # Capture the first valid IPv4 address
+            attacker_ip=$(echo "$packet" | grep -oE '([0-9]{1,3}\.){3}[0-9]{1,3}' | head -n 1)
+            # Get the MAC address from the ARP table
+            attacker_mac=$(arp -n | grep "$attacker_ip" | awk '{print $3}' | head -n 1)
+            if [ -z "$attacker_mac" ]; then
+                attacker_mac="MAC not found"
+            fi
+            echo -e "${MAGENTA}Attacker found: IP: ${attacker_ip}, MAC: ${attacker_mac}${RESET}"
+        fi
+        sleep 1
+    done
 }
 
 # Exit function; stops background processes.
@@ -253,6 +298,10 @@ exit_program() {
     if [ -n "$tracking_pid" ]; then
         kill $tracking_pid 2>/dev/null
         wait $tracking_pid 2>/dev/null
+    fi
+    if [ -n "$attacker_monitor_pid" ]; then
+        kill $attacker_monitor_pid 2>/dev/null
+        wait $attacker_monitor_pid 2>/dev/null
     fi
     echo -e "${RED}\nExiting..."
     exit 0
