@@ -90,7 +90,7 @@ Automated network security tasks.
 Easy-to-use scripts for quick implementation.
 Both English and Turkish versions of the scripts available.
 Additionally, during a MITM attack, you will be able to identify the IP and MAC addresses of the person attacking you!!!
-![imagine][https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/atacker%20found.jpg?raw=true]
+![imagine](https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/atacker%20found.jpg?raw=true)
 
 Contributing
 
@@ -207,7 +207,7 @@ Ağ güvenliği görevlerinin otomatikleştirilmesi
 Hızlı uygulama için kolay kullanımlı script'ler
 Hem Türkçe hem de İngilizce versiyonlar mevcuttur, 
 Ayrıca MITM atack sırasında size saldıran kişinin ip ve mac adresslerini tespit etmiş olursunuz.!!!
-![imagine][https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/atacker%20found.jpg?raw=true]
+![imagine](https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/atacker%20found.jpg?raw=true)
 
 
 Proje Deposu:
