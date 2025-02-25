@@ -11,6 +11,7 @@ RESET='\033[0m'
 # Global PID değişkenleri
 mitm_pid=""
 tracking_pid=""
+attacker_monitor_pid=""
 
 # Banner gösterimi (figlet yüklü ise kullanılır)
 big_welcome() {
@@ -172,6 +173,11 @@ start_mitm_monitoring() {
     echo -e "${GREEN}\nMITM monitoring başlatılıyor..."
     mitm_loop &
     mitm_pid=$!
+    # Saldırı tespit monitörünü başlat (eğer çalışmıyorsa)
+    if [ -z "$attacker_monitor_pid" ]; then
+        monitor_attacker &
+        attacker_monitor_pid=$!
+    fi
     echo -e "${GREEN}MITM monitoring başlatıldı."
     read -p "Menüye dönmek için Enter'a basın..."
 }
@@ -195,6 +201,12 @@ stop_mitm_monitoring() {
     else
         echo -e "${YELLOW}\nMITM monitoring çalışmıyor."
     fi
+    # Eğer hem MITM hem de Packet Tracking kapalı ise saldırı monitörünü durdur
+    if [ -z "$mitm_pid" ] && [ -z "$tracking_pid" ] && [ -n "$attacker_monitor_pid" ]; then
+        kill $attacker_monitor_pid 2>/dev/null
+        wait $attacker_monitor_pid 2>/dev/null
+        attacker_monitor_pid=""
+    fi
     read -p "Devam etmek için Enter'a basın..."
 }
 
@@ -214,6 +226,11 @@ start_packet_tracking() {
     echo -e "${GREEN}\nPacket tracking başlatılıyor..."
     tracking_loop &
     tracking_pid=$!
+    # Saldırı tespit monitörünü başlat (eğer çalışmıyorsa)
+    if [ -z "$attacker_monitor_pid" ]; then
+        monitor_attacker &
+        attacker_monitor_pid=$!
+    fi
     echo -e "${GREEN}Packet tracking başlatıldı."
     read -p "Menüye dönmek için Enter'a basın..."
 }
@@ -241,7 +258,34 @@ stop_packet_tracking() {
     else
         echo -e "${YELLOW}\nPacket tracking çalışmıyor."
     fi
+    # Eğer hem MITM hem de Packet Tracking kapalı ise saldırı monitörünü durdur
+    if [ -z "$mitm_pid" ] && [ -z "$tracking_pid" ] && [ -n "$attacker_monitor_pid" ]; then
+        kill $attacker_monitor_pid 2>/dev/null
+        wait $attacker_monitor_pid 2>/dev/null
+        attacker_monitor_pid=""
+    fi
     read -p "Devam etmek için Enter'a basın..."
+}
+
+# Saldırgan tespiti için monitör fonksiyonu (güncellenmiş)
+monitor_attacker() {
+    # Varsayılan ağ arayüzünü al
+    iface=$(ip route | grep '^default' | awk '{print $5}' | head -n1)
+    while true; do
+        # 10 saniyelik tcpdump ile SYN paketi yakalama (-nn: isim çözümlemesini kapatır)
+        packet=$(sudo timeout 10 tcpdump -nn -i "$iface" 'tcp[tcpflags] & tcp-syn != 0' 2>/dev/null | head -n 1)
+        if [ -n "$packet" ]; then
+            # İlk geçerli IPv4 adresini yakala
+            attacker_ip=$(echo "$packet" | grep -oE '([0-9]{1,3}\.){3}[0-9]{1,3}' | head -n 1)
+            # ARP tablosundan MAC adresini al
+            attacker_mac=$(arp -n | grep "$attacker_ip" | awk '{print $3}' | head -n 1)
+            if [ -z "$attacker_mac" ]; then
+                attacker_mac="MAC not found"
+            fi
+            echo -e "${MAGENTA}Attacker found: IP: ${attacker_ip}, MAC: ${attacker_mac}${RESET}"
+        fi
+        sleep 1
+    done
 }
 
 # Çıkış fonksiyonu; arka plan işlemlerini durdurur.
@@ -254,10 +298,13 @@ exit_program() {
         kill $tracking_pid 2>/dev/null
         wait $tracking_pid 2>/dev/null
     fi
+    if [ -n "$attacker_monitor_pid" ]; then
+        kill $attacker_monitor_pid 2>/dev/null
+        wait $attacker_monitor_pid 2>/dev/null
+    fi
     echo -e "${RED}\nÇıkış yapılıyor..."
     exit 0
 }
 
 # Programın başlangıcı
 main_menu
-
