@@ -92,7 +92,7 @@ Both English and Turkish versions of the scripts available.
 
 *ATTACK TESTS*
 
-+When +MITM atack is tried or if a vulnerability is sought on your computer;
++When MITM atack is tried or if a vulnerability is sought on your computer;
 ![imagine](https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/TEST.png?raw=true)
 
 You will detect the IP and MAC addresses of the person who attacked you.!!!
@@ -197,12 +197,12 @@ emirkeles.sh:
 ````
 Ağ güvenliği görevleri için ana script. Bu script, yaygın ağ güvenliği süreçlerini otomatikleştirmeye yardımcı olacaktır.
 ```
-   emirkeleseng.sh:
+emirkeleseng.sh:
 ```
-   cript'inin İngilizce versiyonu. Aynı işlevselliği sağlar ancak daha geniş erişilebilirlik için İngilizce olarak sunulmuştur.
+Cript'inin İngilizce versiyonu. Aynı işlevselliği sağlar ancak daha geniş erişilebilirlik için İngilizce olarak sunulmuştur.
 Kullanım
 ````
-   emirkeles.shemirkeles.sh: Ağ güvenliği görevleri için ana script. Bu script, yaygın ağ güvenliği süreçlerini otomatikleştirmeye yardımcı olacaktır.
+emirkeles.shemirkeles.sh: Ağ güvenliği görevleri için ana script. Bu script, yaygın ağ güvenliği süreçlerini otomatikleştirmeye yardımcı olacaktır.
 ````
 Kurulum tamamlandığında, script'leri kullanmaya başlayabilirsiniz. İşte ana güvenlik script'ini çalıştırma yolu:
 ```
