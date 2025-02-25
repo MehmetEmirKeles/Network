@@ -209,11 +209,17 @@ Hem Türkçe hem de İngilizce versiyonlar mevcuttur,
 
 *SALDIRI TESTLERI*
 
-+MITM atack sırasında size saldıran kişinin ip ve mac adresslerini tespit etmiş olursunuz.!!!
++MITM atack denendiğinde yada sizin bilgisayarınızda zafiyet aranıyor ise;
 ![imagine](https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/atacker%20found.jpg?raw=true)
 
-+Wireshark gibi programlardan eğer pinglediğiniz paketler izlenirse, 
-[imagine](https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/TEST..png?raw=true)
+Size saldıran kişinin ip ve mac adresslerini tespit etmiş olursunuz.!!!
+![imagine](https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/TEST.png?raw=true)
+
++Wireshark gibi programlardan eğer pinglediğiniz paketler izlenirse ve sizin yolladığınız paketleri takip edip bilgilerinizi çalmak isteyen Hackerlar olursa, 
+![imagine](https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/TEST..png?raw=true)
+
+Bu şekilde tuzağınıza düşmüş, size İP adresini ve MAC adresini kaptırmış olur.
+![imagine](https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/WiresharkTest.png?raw=true)
 
 
 Proje Deposu:
