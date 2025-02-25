@@ -197,6 +197,8 @@ bash emirkeles.sh
 ```
 bash emirkeleseng.sh
 ```
+![imagine](https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/Network.png?raw=true)
+
 Özellikler
 
 Ağ güvenliği görevlerinin otomatikleştirilmesi
