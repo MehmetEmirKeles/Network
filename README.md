@@ -3,6 +3,7 @@ Network Security Tools
 A collection of useful scripts designed to automate network security tasks. This repository contains scripts for various security-related tasks, enabling network administrators, security professionals, and anyone interested in network security to effectively automate and manage security measures.
 
 Before You Begin: What Does This Project Do?
+[imagine](https://github.com/MehmetEmirKeles/Network/raw/refs/heads/Nework-Security/Networkall.webp)
 
 As you know, we live in an era where we are still exposed to risks such as theft of our personal information, unauthorized access to our data, and violations of our privacy rights. While using the internet has become a necessity, it often comes with these risks. The goal of this project is to help keep your information secure while using public internet networks and protect you from various types of attacks. So, how does this project protect us from attacks?
 1. What is a MITM (Man-in-the-Middle) Attack?
