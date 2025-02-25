@@ -206,8 +206,14 @@ bash emirkeleseng.sh
 Ağ güvenliği görevlerinin otomatikleştirilmesi
 Hızlı uygulama için kolay kullanımlı script'ler
 Hem Türkçe hem de İngilizce versiyonlar mevcuttur, 
-Ayrıca MITM atack sırasında size saldıran kişinin ip ve mac adresslerini tespit etmiş olursunuz.!!!
+
+*SALDIRI TESTLERI*
+
++MITM atack sırasında size saldıran kişinin ip ve mac adresslerini tespit etmiş olursunuz.!!!
 ![imagine](https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/atacker%20found.jpg?raw=true)
+
++Wireshark gibi programlardan eğer pinglediğiniz paketler izlenirse, 
+[imagine](https://github.com/MehmetEmirKeles/Network/blob/Nework-Security/TEST..png?raw=true)
 
 
 Proje Deposu:
