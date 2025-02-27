@@ -1,4 +1,4 @@
-MIT License
+MIT License (with Attribution Requirement)
 
 Copyright (c) 2025 Emir Keleş
 
@@ -9,10 +9,13 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Attribution Requirement:
+Any copy or substantial portion of the Software that is distributed, used, or modified, including derivative works, must include the above copyright notice and this permission notice, and must clearly attribute the original developer as "Emir Keleş." This attribution should appear in the source code, accompanying documentation, or any visible location in binary distributions.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+Permitted Uses:
+
+The Software may be used, copied, modified, merged, published, distributed, sublicensed, and/or sold free of charge for any purpose, whether commercial or non-commercial.
+**THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
